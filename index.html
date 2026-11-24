@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Dulce Encanto: postres para mesas dulces y celebraciones. Elige tu paquete y combina tus postres favoritos.">
+  <title>Dulce Encanto | Mesas de dulces</title>
+  <style>
+    :root{
+      --rose:#d98fa5; --rose-dark:#a94f6c; --pink:#f8e5e9;
+      --cream:#fffaf5; --beige:#ead9c9; --brown:#6d5148;
+      --ink:#493934; --muted:#826d66; --white:#fff;
+      --shadow:0 12px 34px rgba(109,81,72,.10);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--cream);color:var(--ink);font-family:Georgia,"Times New Roman",serif;line-height:1.55}
+    a{color:inherit}
+    .topbar{background:var(--rose-dark);color:white;text-align:center;padding:8px 16px;font:13px Arial,sans-serif;letter-spacing:.06em}
+    header{padding:22px 6%;display:flex;align-items:center;justify-content:space-between;gap:20px;background:rgba(255,250,245,.96);position:sticky;top:0;z-index:5;border-bottom:1px solid #f0e1dc}
+    .brand{font-size:27px;font-weight:bold;color:var(--rose-dark);letter-spacing:.02em}
+    .brand small{display:block;font:11px Arial,sans-serif;color:var(--muted);letter-spacing:.18em;text-transform:uppercase;text-align:center}
+    nav{display:flex;gap:22px;flex-wrap:wrap;font:14px Arial,sans-serif}
+    nav a{text-decoration:none;color:var(--brown)}
+    nav a:hover{color:var(--rose-dark)}
+    .hero{padding:76px 7% 70px;background:linear-gradient(120deg,#f8e5e9 0%,#fff7f0 58%,#efe0d2 100%);text-align:center;position:relative;overflow:hidden}
+    .hero:before,.hero:after{content:"✿";position:absolute;color:rgba(169,79,108,.13);font-size:130px}
+    .hero:before{left:4%;top:8%}.hero:after{right:5%;bottom:2%}
+    .eyebrow{font:12px Arial,sans-serif;letter-spacing:.22em;text-transform:uppercase;color:var(--rose-dark)}
+    h1{font-size:clamp(42px,7vw,70px);line-height:1.05;margin:14px 0;color:var(--rose-dark)}
+    .hero p{font-size:18px;max-width:650px;margin:0 auto 26px;color:var(--brown)}
+    .btn{display:inline-block;border:0;border-radius:999px;padding:13px 23px;background:var(--rose-dark);color:white;text-decoration:none;font: bold 14px Arial,sans-serif;cursor:pointer;transition:.2s}
+    .btn:hover{background:#873d57;transform:translateY(-1px)}
+    .btn.secondary{background:transparent;border:1px solid var(--rose-dark);color:var(--rose-dark)}
+    section{padding:64px 7%}
+    .section-title{text-align:center;margin:0 auto 12px;font-size:36px;color:var(--rose-dark)}
+    .section-sub{text-align:center;color:var(--muted);max-width:650px;margin:0 auto 34px;font:15px Arial,sans-serif}
+    .products{display:grid;grid-template-columns:repeat(auto-fit,minmax(185px,1fr));gap:18px;max-width:1100px;margin:auto}
+    .product{background:white;border:1px solid #f0e3df;border-radius:18px;padding:23px 18px;text-align:center;box-shadow:var(--shadow)}
+    .product .emoji{font-size:43px;background:var(--pink);width:82px;height:82px;border-radius:50%;display:grid;place-items:center;margin:0 auto 13px}
+    .product h3{margin:5px 0;color:var(--brown);font-size:21px}
+    .product p{font:13px Arial,sans-serif;color:var(--muted);margin:0}
+    .packages-wrap{background:#f9eceb}
+    .packages{display:grid;grid-template-columns:repeat(auto-fit,minmax(165px,1fr));gap:14px;max-width:1000px;margin:auto}
+    .package{background:white;border:1px solid #efd9dc;border-radius:16px;text-align:center;padding:23px 12px;box-shadow:var(--shadow)}
+    .package strong{display:block;font-size:30px;color:var(--rose-dark)}
+    .package span{font:13px Arial,sans-serif;color:var(--muted)}
+    .package b{display:block;font: bold 21px Arial,sans-serif;color:var(--brown);margin-top:8px}
+    .note{text-align:center;color:var(--muted);font:13px Arial,sans-serif;margin:24px auto 0}
+    .order-box{max-width:850px;margin:auto;background:white;border:1px solid #f0e3df;border-radius:22px;padding:clamp(20px,4vw,38px);box-shadow:var(--shadow)}
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    label{display:block;font: bold 13px Arial,sans-serif;color:var(--brown);margin-bottom:7px}
+    select,input,textarea{width:100%;border:1px solid #e5d3cf;border-radius:10px;padding:12px 13px;background:#fffdfb;color:var(--ink);font:15px Arial,sans-serif}
+    .qty-list{display:grid;grid-template-columns:1fr 120px;gap:10px 16px;align-items:center;margin:20px 0}
+    .qty-list label{margin:0;font-weight:normal;font-size:15px}
+    .qty-list input{max-width:120px}
+    .summary{background:#fff5f4;border-radius:14px;padding:17px;margin:18px 0;font:14px Arial,sans-serif}
+    .summary strong{color:var(--rose-dark)}
+    .total{font-size:18px;font-weight:bold;margin-top:5px}
+    .hint{font:12px Arial,sans-serif;color:var(--muted);margin:8px 0 0}
+    .full{grid-column:1/-1}
+    .contact{background:linear-gradient(120deg,#f2dfd7,#f8e5e9);text-align:center}
+    .contact p{color:var(--brown)}
+    .social{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:20px}
+    footer{background:#684d48;color:#fff5f1;text-align:center;padding:24px 15px;font:13px Arial,sans-serif}
+    footer a{color:#fff5f1}
+    @media(max-width:650px){header{position:static;flex-direction:column}nav{justify-content:center;gap:13px}.hero{padding:58px 6%}.form-grid{grid-template-columns:1fr}.full{grid-column:auto}.qty-list{grid-template-columns:1fr 100px}.qty-list input{max-width:100px}section{padding:52px 6%}}
+  </style>
+</head>
+<body>
+  <div class="topbar">POSTRES HECHOS CON AMOR PARA TUS MOMENTOS ESPECIALES</div>
+  <header>
+    <div class="brand">Dulce Encanto<small>Mesas de dulces · Repostería</small></div>
+    <nav>
+      <a href="#inicio">Inicio</a><a href="#catalogo">Catálogo</a><a href="#paquetes">Paquetes</a><a href="#pedido">Hacer pedido</a><a href="#contacto">Contacto</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="eyebrow">Un toque dulce para celebrar</div>
+      <h1>Dulce Encanto</h1>
+      <p>Pequeños detalles, grandes momentos dulces. Creamos deliciosas opciones para tus mesas de dulces, cumpleaños y celebraciones.</p>
+      <a class="btn" href="#pedido">Armar mi paquete</a>
+      <a class="btn secondary" href="#catalogo">Ver catálogo</a>
+    </section>
+
+    <section id="catalogo">
+      <h2 class="section-title">Nuestro catálogo</h2>
+      <p class="section-sub">Escoge tus favoritos y combínalos como más te guste para completar tu paquete.</p>
+      <div class="products">
+        <article class="product"><div class="emoji">🍩</div><h3>Donas</h3><p>Un clásico delicioso para compartir.</p></article>
+        <article class="product"><div class="emoji">🍮</div><h3>Shots de 1 onza</h3><p>Pequeños postres llenos de sabor.</p></article>
+        <article class="product"><div class="emoji">🍪</div><h3>Cook cakes</h3><p>Una opción dulce para tu mesa.</p></article>
+        <article class="product"><div class="emoji">🍩</div><h3>Mini donas</h3><p>Pequeñas, bonitas y deliciosas.</p></article>
+        <article class="product"><div class="emoji">🍰</div><h3>Tres leches</h3><p>Suaves y cremosos, ideales para celebrar.</p></article>
+      </div>
+    </section>
+
+    <section class="packages-wrap" id="paquetes">
+      <h2 class="section-title">Elige tu paquete</h2>
+      <p class="section-sub">Todos los paquetes permiten combinar los diferentes tipos de postres.</p>
+      <div class="packages">
+        <div class="package"><strong>15</strong><span>postres</span><b>₡8.000</b></div>
+        <div class="package"><strong>30</strong><span>postres</span><b>₡15.000</b></div>
+        <div class="package"><strong>50</strong><span>postres</span><b>₡30.000</b></div>
+        <div class="package"><strong>70</strong><span>postres</span><b>₡40.000</b></div>
+        <div class="package"><strong>100</strong><span>postres</span><b>₡50.000</b></div>
+      </div>
+      <p class="note">El precio corresponde al paquete completo. La cantidad de cada tipo de postre la eliges tú.</p>
+    </section>
+
+    <section id="pedido">
+      <h2 class="section-title">Arma tu pedido</h2>
+      <p class="section-sub">Selecciona un paquete y distribuye la cantidad entre tus postres favoritos.</p>
+      <div class="order-box">
+        <div class="form-grid">
+          <div><label for="package">1. Selecciona tu paquete</label>
+            <select id="package">
+              <option value="">Elige una opción</option>
+              <option value="15">15 postres — ₡8.000</option>
+              <option value="30">30 postres — ₡15.000</option>
+              <option value="50">50 postres — ₡30.000</option>
+              <option value="70">70 postres — ₡40.000</option>
+              <option value="100">100 postres — ₡50.000</option>
+            </select>
+          </div>
+          <div><label for="date">2. Fecha de tu celebración</label><input id="date" type="date"></div>
+        </div>
+        <div style="margin-top:22px"><label>3. ¿Qué postres deseas incluir?</label>
+          <div class="qty-list">
+            <label for="donas">Donas</label><input type="number" min="0" step="1" value="0" id="donas">
+            <label for="shots">Shots de 1 onza</label><input type="number" min="0" step="1" value="0" id="shots">
+            <label for="cookies">Cook cakes</label><input type="number" min="0" step="1" value="0" id="cookies">
+            <label for="minidonas">Mini donas</label><input type="number" min="0" step="1" value="0" id="minidonas">
+            <label for="tresleches">Tres leches</label><input type="number" min="0" step="1" value="0" id="tresleches">
+          </div>
+        </div>
+        <div class="summary">
+          <div>Postres seleccionados: <strong id="count">0</strong></div>
+          <div>Postres del paquete: <strong id="required">—</strong></div>
+          <div class="total">Total del paquete: <span id="price">—</span></div>
+          <p class="hint" id="status">Selecciona un paquete y las cantidades de cada postre.</p>
+        </div>
+        <div class="form-grid">
+          <div><label for="name">Tu nombre</label><input id="name" type="text" placeholder="Nombre"></div>
+          <div><label for="phone">Teléfono de contacto (opcional)</label><input id="phone" type="tel" placeholder="Tu número"></div>
+          <div class="full"><label for="details">Detalles adicionales (opcional)</label><textarea id="details" rows="3" placeholder="Cuéntanos sobre tu evento, decoración o alguna solicitud especial..."></textarea></div>
+        </div>
+        <p class="hint">El envío del mensaje no confirma automáticamente la reserva. Dulce Encanto te contactará para confirmar disponibilidad y detalles.</p>
+        <div style="text-align:center;margin-top:22px"><button class="btn" id="send">Solicitar por WhatsApp</button></div>
+      </div>
+    </section>
+
+    <section class="contact" id="contacto">
+      <h2 class="section-title">¡Hagamos tu celebración más dulce!</h2>
+      <p>Escríbenos para consultar disponibilidad y preparar tu paquete.</p>
+      <div class="social">
+        <a class="btn" href="https://wa.me/50687320470" target="_blank" rel="noopener">WhatsApp: 8732-0470</a>
+        <a class="btn secondary" href="https://www.instagram.com/dulce_encanto742/" target="_blank" rel="noopener">Instagram @dulce_encanto742</a>
+      </div>
+    </section>
+  </main>
+  <footer>© <span id="year"></span> Dulce Encanto · Hecho con cariño en Costa Rica</footer>
+  <script>
+    const prices = {15:8000,30:15000,50:30000,70:40000,100:50000};
+    const fields = ["donas","shots","cookies","minidonas","tresleches"];
+    const labels = {donas:"Donas",shots:"Shots de 1 onza",cookies:"Cook cakes",minidonas:"Mini donas",tresleches:"Tres leches"};
+    const pkg = document.getElementById("package");
+    const fmt = n => "₡" + Number(n).toLocaleString("es-CR");
+    function update(){
+      const selected = Number(pkg.value || 0);
+      const count = fields.reduce((sum,id)=>sum+Math.max(0,Number(document.getElementById(id).value)||0),0);
+      document.getElementById("count").textContent = count;
+      document.getElementById("required").textContent = selected ? selected : "—";
+      document.getElementById("price").textContent = selected ? fmt(prices[selected]) : "—";
+      let message = "Selecciona un paquete y las cantidades de cada postre.";
+      if(selected && count < selected) message = `Te faltan ${selected-count} postres para completar el paquete.`;
+      if(selected && count === selected) message = "¡Perfecto! Tu selección completa el paquete.";
+      if(selected && count > selected) message = `Has seleccionado ${count-selected} postres de más. Ajusta las cantidades.`;
+      document.getElementById("status").textContent = message;
+      return {selected,count};
+    }
+    [...fields,"package"].forEach(id=>document.getElementById(id).addEventListener("input",update));
+    document.getElementById("send").addEventListener("click",()=>{
+      const {selected,count}=update();
+      if(!selected){alert("Por favor, selecciona un paquete.");return;}
+      if(count!==selected){alert("La cantidad de postres debe ser igual al paquete seleccionado.");return;}
+      const name=document.getElementById("name").value.trim();
+      if(!name){alert("Por favor, escribe tu nombre.");return;}
+      const date=document.getElementById("date").value || "Por definir";
+      const phone=document.getElementById("phone").value.trim() || "No indicado";
+      const details=document.getElementById("details").value.trim() || "Ninguno";
+      const chosen=fields.filter(id=>Number(document.getElementById(id).value)>0)
+        .map(id=>`${labels[id]}: ${document.getElementById(id).value}`).join("\n");
+      const message=`¡Hola, Dulce Encanto! Quiero solicitar un pedido.\n\nNombre: ${name}\nTeléfono: ${phone}\nPaquete: ${selected} postres (${fmt(prices[selected])})\nFecha del evento: ${date}\n\nMi selección:\n${chosen}\n\nDetalles adicionales: ${details}\n\nQuedo pendiente de la confirmación. ¡Gracias!`;
+      window.open("https://wa.me/50687320470?text="+encodeURIComponent(message),"_blank");
+    });
+    document.getElementById("year").textContent=new Date().getFullYear();
+    update();
+  </script>
+</body>
+</html>
